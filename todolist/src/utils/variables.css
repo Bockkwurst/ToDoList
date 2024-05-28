@@ -1,0 +1,34 @@
+@font-face {
+    font-family: 'Calibre Regular';
+    src: url("../assets/fonts/Calibre-Regular.ttf") format('truetype');
+}
+@font-face {
+    font-family: 'Calibre Bold';
+    src: url("../assets/fonts/Calibre-Bold.ttf") format('truetype');
+}
+@font-face {
+    font-family: 'Calibre medium';
+    src: url("../assets/fonts/Calibre-Medium.ttf") format('truetype');
+}
+
+
+:root{
+    --bg_light_primary: #f9f9f9;
+    --bg_dark_primary: #27323f;
+    --bg_light_secondary: #ede6dc;
+    --bg_dark_secondary: #a5a5a5;
+    --text_light_primary: #27323f;
+    --text_dark_primary: #ededed;
+    --text_secondary: #d69603;
+    --higlight: #002a5c;
+    --success_color: #ccff99;
+    --error_color: #ff6698;
+
+    --primary_font_regular: 'Calibre Regular', Arial, sans-serif;
+    --primary_font_medium: 'Calibre Medium', Arial, sans-serif;
+    --primary_font_bold: 'Calibre Bold', Arial, sans-serif;
+    --secondary_font: 'Realtime Rounded', sans-serif;
+    --tertiary_font: 'Northwell Clean Alt', cursive;
+
+    --button_transition: 0.3s;
+}
