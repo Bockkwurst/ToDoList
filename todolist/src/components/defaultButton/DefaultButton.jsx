@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './componentsCss/button.module.css'
+import styles from './button.module.css'
 
 const DefaultButton = ({buttonText, onClick}) => {
 

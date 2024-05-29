@@ -54,10 +54,6 @@
     --secondary_font_bold: 'Heebo Bold', sans-serif;
     --tertiary_font: 'Mathanifo Script', cursive;
 
-    --button_transition: 0.3s;
+    --button_transition: all 0.3s ease;
 }
 
-body{
-    margin: 0;
-    padding: 0;
-}

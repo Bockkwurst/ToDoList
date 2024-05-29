@@ -1,6 +1,6 @@
 import React from "react";
 import './pagesCss/startpage.css'
-import DefaultButton from "../components/DefaultButton.jsx";
+import DefaultButton from "../components/defaultButton/DefaultButton.jsx";
 
 function StartPage() {
     return (
