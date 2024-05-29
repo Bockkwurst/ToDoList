@@ -1,0 +1,122 @@
+@import url('/src/utils/variables.css');
+
+.buttonContainer {
+    margin: 10px;
+}
+
+.buttonClass {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font: inherit;
+    padding: 0.75em 3em;
+    background: var(--higlight);
+    border: 0.1em solid var(--bg_dark_primary);
+    border-radius: 100vw;
+    cursor: pointer;
+    transition: background-color 250ms;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    color: var(--success_color);
+    font-family: var(--secondary_font_bold);
+    font-weight: bold;
+}
+
+.buttonClass:hover,
+.buttonClass:focus-visible {
+    background: hsl(185, 53%, 34%);
+}
+
+.buttonClass > span {
+    position: absolute;
+    z-index: -1;
+    width: 33.333%;
+    height: 100%;
+
+    background: transparent;
+    opacity: .5;
+}
+
+.buttonClass > :first-child {
+    left: 0;
+    top: 0;
+
+}
+
+.buttonClass > :last-child {
+    right: 0;
+    top: 0;
+
+}
+
+.buttonClass::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: hsl(200 60% 20%);
+
+    width: 10%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    inset: 0;
+    margin: auto;
+    opacity: 0;
+
+    transition: transform 1000ms 200ms, opacity 200ms;
+}
+
+.buttonClass::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: hsl(185 60% 40%);
+
+    width: 10%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    inset: 0;
+    margin: auto;
+    opacity: 0;
+
+    transition: transform 1500ms 400ms, opacity 400ms;
+}
+
+.buttonClass:active::before {
+    transition: transform 1000ms, opacity 500ms;
+    transform: scale(20);
+    opacity: 1;
+}
+
+.buttonClass:active::after {
+    transition: transform 2000ms, opacity 700ms;
+    transform: scale(20);
+    opacity: 1;
+}
+
+.buttonClass:has(:first-child:active)::before {
+    margin-left: 0;
+}
+
+.buttonClass:has(:last-child:active)::before {
+    margin-right: 0;
+}
+
+.buttonClass:has(:first-child:active)::before,
+.buttonClass:has(:last-child:active)::before {
+    transition: transform 500ms, opacity 250ms;
+}
+
+.buttonClass:has(:first-child:active)::after {
+    margin-left: 0;
+}
+
+.buttonClass:has(:last-child:active)::after {
+    margin-right: 0;
+}
+
+.buttonClass:has(:first-child:active)::after,
+.buttonClass:has(:last-child:active)::after {
+    transition: transform 1000ms, opacity 450ms;
+}

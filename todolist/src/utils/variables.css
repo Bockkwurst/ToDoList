@@ -56,3 +56,8 @@
 
     --button_transition: 0.3s;
 }
+
+body{
+    margin: 0;
+    padding: 0;
+}
