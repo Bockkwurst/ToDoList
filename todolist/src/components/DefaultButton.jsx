@@ -1,7 +1,7 @@
 import React from "react";
 import styles from './componentsCss/button.module.css'
 
-const CustomButton = ({buttonText, buttonClass, onClick}) => {
+const DefaultButton = ({buttonText, onClick}) => {
 
     return (
         <div className={styles.buttonContainer}>
@@ -14,4 +14,4 @@ const CustomButton = ({buttonText, buttonClass, onClick}) => {
     )
 }
 
-export default CustomButton;
+export default DefaultButton;

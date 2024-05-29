@@ -1,11 +1,11 @@
 import React from "react";
 import './pagesCss/startpage.css'
-import CustomButton from "../components/CustomButton.jsx";
+import DefaultButton from "../components/DefaultButton.jsx";
 
 function StartPage() {
     return (
         <div className="startPageContainer">
-            <CustomButton/>
+            <DefaultButton/>
             <h1>Start Page</h1>
         </div>
     )
