@@ -5,6 +5,11 @@ body {
     padding: 0;
 }
 
+body.light-mode {
+    background-color: var(--bg_light_secondary);
+    color: var(--text_light_primary);
+}
+
 body.dark-mode {
     background-color: var(--bg_dark_primary);
     color: var(--text_dark_primary);
