@@ -8,9 +8,9 @@ export function App() {
     const [darkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
-        if (darkMode){
+        if (darkMode) {
             document.body.classList.add("dark-mode");
-        }else{
+        } else {
             document.body.classList.remove("dark-mode");
         }
     }, [darkMode]);
@@ -30,4 +30,5 @@ export function App() {
         </BrowserRouter>
     );
 }
+
 export default App;

@@ -67,7 +67,7 @@
     transition: transform 1000ms 200ms, opacity 200ms;
 }
 
-.buttonClass::after {
+.button::after {
     content: "";
     position: absolute;
     z-index: -1;
@@ -83,40 +83,40 @@
     transition: transform 1500ms 400ms, opacity 400ms;
 }
 
-.buttonClass:active::before {
+.button:active::before {
     transition: transform 1000ms, opacity 500ms;
     transform: scale(20);
     opacity: 1;
 }
 
-.buttonClass:active::after {
+.button:active::after {
     transition: transform 2000ms, opacity 700ms;
     transform: scale(20);
     opacity: 1;
 }
 
-.buttonClass:has(:first-child:active)::before {
+.button:has(:first-child:active)::before {
     margin-left: 0;
 }
 
-.buttonClass:has(:last-child:active)::before {
+.button:has(:last-child:active)::before {
     margin-right: 0;
 }
 
-.buttonClass:has(:first-child:active)::before,
-.buttonClass:has(:last-child:active)::before {
+.button:has(:first-child:active)::before,
+.button:has(:last-child:active)::before {
     transition: transform 500ms, opacity 250ms;
 }
 
-.buttonClass:has(:first-child:active)::after {
+.button:has(:first-child:active)::after {
     margin-left: 0;
 }
 
-.buttonClass:has(:last-child:active)::after {
+.button:has(:last-child:active)::after {
     margin-right: 0;
 }
 
-.buttonClass:has(:first-child:active)::after,
-.buttonClass:has(:last-child:active)::after {
+.button:has(:first-child:active)::after,
+.button:has(:last-child:active)::after {
     transition: transform 1000ms, opacity 450ms;
 }

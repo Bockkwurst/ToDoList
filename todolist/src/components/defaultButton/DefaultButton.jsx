@@ -5,7 +5,7 @@ const DefaultButton = ({buttonText, onClick}) => {
 
     return (
         <div className={styles.buttonContainer}>
-            <button className={styles.buttonClass} onClick={onClick}>
+            <button className={styles.button} onClick={onClick}>
                 <span></span>
                 {buttonText}
                 <span></span>
