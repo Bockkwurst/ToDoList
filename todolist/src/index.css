@@ -1,0 +1,11 @@
+@import url("/src/utils/variables.css");
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body.dark-mode {
+    background-color: var(--bg_dark_primary);
+    color: var(--text_dark_primary);
+}
