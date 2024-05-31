@@ -14,23 +14,13 @@
 }
 
 @font-face {
-    font-family: 'Mathanifo Script';
-    src: url("../assets/fonts/Mathanifo Script.ttf") format('truetype');
+    font-family: 'Realtime Rounded';
+    src: url("../assets/fonts/Juri Zaech - Realtime Rounded.otf") format('opentype');
 }
 
 @font-face {
-    font-family: 'Heebo Regular';
-    src: url("../assets/fonts/Heebo-Regular.ttf") format('truetype');
-}
-
-@font-face {
-    font-family: 'Heebo Medium';
-    src: url("../assets/fonts/Heebo-Medium.ttf") format('truetype');
-}
-
-@font-face {
-    font-family: 'Heebo Bold';
-    src: url("../assets/fonts/Heebo-Bold.ttf") format('truetype');
+    font-family: 'Northwell Clean Alt';
+    src: url("../assets/fonts/Northwell Clean Alt.ttf") format('truetype');
 }
 
 
@@ -45,15 +35,13 @@
     --higlight: #002a5c;
     --success_color: #ccff99;
     --error_color: #ff6698;
-    --background_gradient_light: radial-gradient(circle,80vw 80vh at 50% 50%,#f9f9f9 0%,#f9f9f9 100%);
 
     --primary_font_regular: 'Calibre Regular', Arial, sans-serif;
     --primary_font_medium: 'Calibre Medium', Arial, sans-serif;
     --primary_font_bold: 'Calibre Bold', Arial, sans-serif;
-    --secondary_font_regular: 'Heebo Regular', sans-serif;
-    --secondary_font_medium: 'Heebo Medium', sans-serif;
-    --secondary_font_bold: 'Heebo Bold', sans-serif;
-    --tertiary_font: 'Mathanifo Script', cursive;
+    --secondary_font: 'Realtime Rounded', Arial, sans-serif;
+    --tertiary_font: 'Northwell Clean Alt', Arial, sans-serif;
+
 
     --button_transition: all 0.3s ease;
 }

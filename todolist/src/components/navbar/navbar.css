@@ -1,0 +1,73 @@
+@import url("/src/utils/variables.css");
+
+body {
+    font-size: 16px;
+    font-family: var(--secondary_font);
+}
+
+.img {
+    width: 20%;
+    height: 20%;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 65px;
+}
+
+.menu-container.light-mode {
+    background-color: var(--bg_dark_primary);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-container.dark-mode {
+    background-color: var(--bg_light_primary);
+}
+
+
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+    margin-right: 2rem;
+    margin-top: 0;
+    text-decoration: none;
+}
+
+.link.light-mode {
+    color: var(--text_dark_primary);
+    transition: var(--button_transition);
+}
+
+.link.dark-mode {
+    color: var(--text_light_primary);
+    transition: var(--button_transition);
+}
+
+.link:hover {
+    background-color: var(--higlight);
+    color: var(--text_secondary);
+}
