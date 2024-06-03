@@ -1,10 +1,17 @@
 import React from "react";
+import './loginpage.css'
 
-function LoginPage() {
+import LoginForm from "../../components/loginForm/LoginForm.jsx";
+
+function LoginPage({darkMode}) {
+
+
+
+
     return (
-        <div>
-            <h1>Login Page</h1>
-        </div>
+        <LoginForm/>
+
     )
 }
+
 export default LoginPage;
