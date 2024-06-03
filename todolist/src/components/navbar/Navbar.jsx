@@ -1,10 +1,10 @@
-import {useContext, useState} from "react";
-import {Link, NavLink} from "react-router-dom";
+import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import "./navbar.css";
-import {FaFortAwesomeAlt, FaRegEdit} from "react-icons/fa";
+import { FaFortAwesomeAlt, FaRegEdit } from "react-icons/fa";
 
 
-export default function Navbar({darkMode, setDarkMode}) {
+export default function Navbar({darkMode}) {
 
     const [menuOpen, setMenuOpen] = useState(false);
 
@@ -16,7 +16,7 @@ export default function Navbar({darkMode, setDarkMode}) {
 
     return (
         <nav className={navbarClass}>
-            <Link to="/" className="logo">
+            <Link to="/" className="logo-link">
                 <img src={logo} alt="Logo" className="img"/>
             </Link>
             <div

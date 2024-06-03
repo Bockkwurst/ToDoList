@@ -28,9 +28,9 @@ export function App() {
                 <Navbar darkMode={darkMode} setDarkMode={setDarkMode}/>
                 <ToggleSwitch toggled={darkMode} onClick={handleClick}/>
                 <Routes>
-                    <Route path="/" element={<StartPage/>}/>
-                    <Route path="/register" element={<RegisterPage/>}/>
-                    <Route path="/login" element={<LoginPage/>}/>
+                    <Route path="/" element={<StartPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+                    <Route path="/register" element={<RegisterPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+                    <Route path="/login" element={<LoginPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
                 </Routes>
             </div>
         </BrowserRouter>
