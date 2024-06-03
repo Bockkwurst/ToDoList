@@ -2,9 +2,10 @@
 
 .buttonContainer {
     margin: 10px;
+
 }
 
-.buttonClass {
+.button {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,16 +21,17 @@
     isolation: isolate;
     overflow: hidden;
     color: var(--success_color);
-    font-family: var(--secondary_font_bold);
+    font-family: var(--secondary_font);
     font-weight: bold;
+    box-shadow: 2px 2px 2px 2px dimgrey;
 }
 
-.buttonClass:hover,
-.buttonClass:focus-visible {
+.button:hover,
+.button:focus-visible {
     background: hsl(185, 53%, 34%);
 }
 
-.buttonClass > span {
+.button > span {
     position: absolute;
     z-index: -1;
     width: 33.333%;
@@ -39,19 +41,19 @@
     opacity: .5;
 }
 
-.buttonClass > :first-child {
+.button > :first-child {
     left: 0;
     top: 0;
 
 }
 
-.buttonClass > :last-child {
+.button > :last-child {
     right: 0;
     top: 0;
 
 }
 
-.buttonClass::before {
+.button::before {
     content: "";
     position: absolute;
     z-index: -1;

@@ -6,7 +6,9 @@
     border-radius: 50px;
     margin: auto;
     background-image: linear-gradient(aqua, skyblue);
-    position: relative;
+    position: absolute;
+    top: 70px;
+    right: 5px;
     cursor: pointer;
     transform: scale(0.4);
 }
