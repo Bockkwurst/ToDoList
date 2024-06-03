@@ -1,8 +1,4 @@
-.start-page-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.login-page-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -15,11 +11,11 @@
     box-shadow: 3px 3px 3px 3px dimgray;
 }
 
-.start-page-container.dark-mode {
+.login-page-container.dark-mode {
     background: var(--bg_dark_primary);
 }
 
-.start-page-container.light-mode {
+.login-page-container.light-mode {
     background: var(--bg_light_primary);
 }
 

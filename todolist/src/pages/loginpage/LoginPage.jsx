@@ -3,10 +3,14 @@ import './loginpage.css'
 
 import LoginForm from "../../components/loginForm/LoginForm.jsx";
 
-function LoginPage({darkMode, setDarkMode}) {
+function LoginPage({darkMode}) {
+
+
+
 
     return (
-        <LoginForm darkMode={darkMode} setDarkMode={setDarkMode}/>
+        <LoginForm/>
+
     )
 }
 
