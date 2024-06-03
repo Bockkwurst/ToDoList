@@ -9,7 +9,7 @@ function StartPage({darkMode}) {
     const title1Class = darkMode ? "title-1 dark-mode" : "title-1 light-mode";
     const title2Class = darkMode ? "title-2 dark-mode" : "title-2 light-mode";
     const title3Class = darkMode ? "title-3 dark-mode" : "title-3 light-mode";
-    const logoSrc = darkMode ? "/images/logo-lang-dunkel.png" : "/images/logo-lang-weiss.png";
+    const logoSrc = darkMode ? "/images/logo-lang-weiss.png" : "/images/logo-lang-dunkel.png";
 
 
     return (

@@ -25,10 +25,12 @@
 
 
 :root{
-    --bg_light_primary: #f9f9f9;
+    --bg_light_primary: #ededed;
     --bg_dark_primary: #27323f;
     --bg_light_secondary: #ede6dc;
     --bg_dark_secondary: #a5a5a5;
+    --bg_waves: url("../images/wave-sand-flat.png") no-repeat bottom center / cover;
+
     --text_light_primary: #27323f;
     --text_dark_primary: #ededed;
     --text_secondary: #d69603;

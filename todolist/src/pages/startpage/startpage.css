@@ -12,11 +12,11 @@
 }
 
 .start-page-container.dark-mode {
-    background: var(--bg_light_secondary);
+    background: var(--bg_dark_primary);
 }
 
 .start-page-container.light-mode {
-    background: var(--bg_dark_primary);
+    background: var(--bg_light_primary);
 }
 
 .title-container {
@@ -45,27 +45,27 @@
 }
 
 .title-1.dark-mode {
-    color: var(--text_light_primary);
+    color: var(--text_dark_primary);
 }
 
 .title-2.dark-mode {
-    color: var(--text_light_primary);
+    color: var(--text_dark_primary);
 }
 
 .title-3.dark-mode {
-    color: var(--text_light_primary);
+    color: var(--text_dark_primary);
 }
 
 .title-1.light-mode {
-    color: var(--text_dark_primary);
+    color: var(--text_light_primary);
 }
 
 .title-2.light-mode {
-    color: var(--text_dark_primary);
+    color: var(--text_light_primary);
 }
 
 .title-3.light-mode {
-    color: var(--text_dark_primary);
+    color: var(--text_light_primary);
 }
 
 .logo {
