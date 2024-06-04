@@ -5,6 +5,7 @@ import ToggleSwitch from "./components/toggle/ToggleSwitch.jsx";
 import Navbar from "./components/navbar/Navbar.jsx";
 import RegisterPage from "./pages/registerpage/RegisterPage.jsx";
 import LoginPage from "./pages/loginpage/LoginPage.jsx";
+import AuthProvider from "./utils/AuthProvider.jsx";
 
 export function App() {
     const [toggled, setToggled] = useState(false);
@@ -23,17 +24,20 @@ export function App() {
     };
 
     return (
-        <BrowserRouter>
-            <div>
-                <Navbar darkMode={darkMode} setDarkMode={setDarkMode}/>
-                <ToggleSwitch toggled={darkMode} onClick={handleClick}/>
-                <Routes>
-                    <Route path="/" element={<StartPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-                    <Route path="/register" element={<RegisterPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-                    <Route path="/login" element={<LoginPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-                </Routes>
-            </div>
-        </BrowserRouter>
+        <AuthProvider>
+            <BrowserRouter>
+                <div>
+                    <Navbar darkMode={darkMode} setDarkMode={setDarkMode}/>
+                    <ToggleSwitch toggled={darkMode} onClick={handleClick}/>
+                    <Routes>
+                        <Route path="/" element={<StartPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+                        <Route path="/register"
+                               element={<RegisterPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+                        <Route path="/login" element={<LoginPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+                    </Routes>
+                </div>
+            </BrowserRouter>
+        </AuthProvider>
     );
 }
 
