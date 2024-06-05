@@ -14,11 +14,11 @@ const LoginForm = ({darkMode}) => {
 
     const navigate = useNavigate();
 
-    const {setToken} = useAuth();
 
-    const [login] = useState('');
+
+    const [login, setLogin] = useState('');
     //const [loginDebounced, setLoginDebounced] = Debounce(login, 500);
-    const [password] = useState('');
+    const [password, setPassword] = useState('');
     //const [passwordDebounced, setPasswordDebounced] = Debounce(password, 500);
     const [error, setError] = useState('');
     const [buttonClicked, setButtonClicked] = useState(false);
@@ -31,9 +31,15 @@ const LoginForm = ({darkMode}) => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://localhost:3000/user/atuhenticate', {login, password});
-            if (response.data && response.data.token) {
-                setToken(response.data.token);
+            const response = await axios.post('http://localhost:3000/user/authenticate', {login, password}, {
+                withCredentials: true,
+            });
+            if (response.data) {
+                axios.get('http://localhost:3000/user', {
+                    withCredentials: true,
+                }).then(response => {
+                    console.log(response.data);
+                });
                 navigate('/home', {replace: true});
             } else {
                 setError('Login failed');
@@ -43,6 +49,7 @@ const LoginForm = ({darkMode}) => {
             setError('Login failed');
         }
     }
+
 
     const handleButtonClick = (event) => {
         event.preventDefault();
