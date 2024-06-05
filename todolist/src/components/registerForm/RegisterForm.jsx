@@ -13,23 +13,22 @@ const RegisterForm = ({darkMode}) => {
     const logoSrc = darkMode ? "/images/logo-hoch-weiss.png" : "/images/logo-hoch-dunkel.png";
 
     const [username, setUsername] = useState('');
-    const [usernameDebounced, setUsernameDebounced] = Debounce(username, 500);
+    //const [usernameDebounced, setUsernameDebounced] = Debounce(username, 500);
     const [email, setEmail] = useState('');
-    const [emailDebounced, setEmailDebounced] = Debounce(email, 500);
+    //const [emailDebounced, setEmailDebounced] = Debounce(email, 500);
     const [password, setPassword] = useState('');
-    const [passwordDebounced, setPasswordDebounced] = Debounce(password, 500);
+    //const [passwordDebounced, setPasswordDebounced] = Debounce(password, 500);
     const [passwordRepeat, setPasswordRepeat] = useState('');
-    const [passwordRepeatDebounced, setPasswordRepeatDebounced] = Debounce(passwordRepeat, 500);
+    //const [passwordRepeatDebounced, setPasswordRepeatDebounced] = Debounce(passwordRepeat, 500);
     const [error, setError] = useState('');
-    const [buttonClicked, setButtonClicked] = useState(false);
     const [usernameInputMade] = useState(false);
-    const [usernameInputMadeDebounced, setUsernameInputMadeDebounced] = Debounce(usernameInputMade, 500);
+    //const [usernameInputMadeDebounced, setUsernameInputMadeDebounced] = Debounce(usernameInputMade, 500);
     const [emailInputMade] = useState(false);
-    const [emailInputMadeDebounced, setEmailInputMadeDebounced] = Debounce(emailInputMade, 500);
+    //const [emailInputMadeDebounced, setEmailInputMadeDebounced] = Debounce(emailInputMade, 500);
     const [passwordInputMade] = useState(false);
-    const [passwordInputMadeDebounced, setPasswordInputMadeDebounced] = Debounce(passwordInputMade, 500);
+    //const [passwordInputMadeDebounced, setPasswordInputMadeDebounced] = Debounce(passwordInputMade, 500);
     const [passwordRepeatInputMade] = useState(false);
-    const [passwordRepeatInputMadeDebounced, setPasswordRepeatInputMadeDebounced] = Debounce(passwordRepeatInputMade, 500);
+    //const [passwordRepeatInputMadeDebounced, setPasswordRepeatInputMadeDebounced] = Debounce(passwordRepeatInputMade, 500);
     const [usernameTaken, setUsernameTaken] = useState(false);
     const [emailTaken, setEmailTaken] = useState(false);
     const [doPasswordsMatch, setDoPasswordsMatch] = useState(true);
@@ -38,6 +37,23 @@ const RegisterForm = ({darkMode}) => {
     const [successMessageColor, setSuccessMessageColor] = useState('');
     const [generatedPassword, setGeneratedPassword] = useState('');
 
+    /*useEffect(() => {
+        if (username) {
+            checkUsername();
+        }
+    }, [usernameDebounced]);
+
+    useEffect(() => {
+        if (email) {
+            checkEmail();
+        }
+    }, [emailDebounced]);
+
+    useEffect(() => {
+        if (password && passwordRepeat) {
+            checkPassword(password, passwordRepeat);
+        }
+    }, [passwordDebounced, passwordRepeatDebounced]);
 
     useEffect(() => {
         if (username) {
@@ -57,7 +73,7 @@ const RegisterForm = ({darkMode}) => {
         if (password && passwordRepeat) {
             checkPassword(password, passwordRepeat);
         }
-    }, [passwordDebounced, passwordRepeatDebounced]);
+    }, [passwordDebounced, passwordRepeatDebounced]);*/
 
     const generatePassword = () => {
         event.preventDefault();
@@ -72,7 +88,7 @@ const RegisterForm = ({darkMode}) => {
         setGeneratedPassword(`${retVal}`)
     }
 
-    const checkUsername = debounce(async () => {
+    /*const checkUsername = debounce(async () => {
         try {
             const response = await axios.get(`http://localhost:3000/user/username/${username}`);
             setUsernameTaken(response.data.taken);
@@ -108,7 +124,7 @@ const RegisterForm = ({darkMode}) => {
             setIsPasswordsValid(true);
             setDoPasswordsMatch(true);
         }
-    });
+    });*/
 
     const handleRegister = async (event) => {
         event.preventDefault();
@@ -131,10 +147,10 @@ const RegisterForm = ({darkMode}) => {
             setEmailTaken(false);
             setDoPasswordsMatch(false);
             setIsPasswordsValid(true);
-            setUsernameInputMadeDebounced(false);
+            /*setUsernameInputMadeDebounced(false);
             setEmailInputMadeDebounced(false);
             setPasswordInputMadeDebounced(false);
-            setPasswordRepeatInputMadeDebounced(false);
+            setPasswordRepeatInputMadeDebounced(false);*/
         } catch (error) {
             console.error('Register error:', error);
         }
@@ -149,18 +165,18 @@ const RegisterForm = ({darkMode}) => {
             <div className="form-container">
                 <form>
                     <label className="label">Benutzername:</label>
-                    <input type="text" placeholder="Benutzername" value={usernameDebounced}
-                           onChange={e => setUsernameDebounced(e.target.value)} className="input"/>
+                    <input type="text" placeholder="Benutzername" value={username}
+                           onChange={e => setUsername(e.target.value)} className="input"/>
                     <label className="label">E-Mail:</label>
-                    <input type="text" placeholder="E-Mail" value={emailDebounced}
-                           onChange={e => setEmailDebounced(e.target.value)}
+                    <input type="text" placeholder="E-Mail" value={email}
+                           onChange={e => setEmail(e.target.value)}
                            className="input"/>
                     <label className="label">Passwort:</label>
-                    <input type="password" placeholder="Passwort" value={passwordDebounced}
-                           onChange={e => setPasswordDebounced(e.target.value)} className="input"/>
+                    <input type="password" placeholder="Passwort" value={password}
+                           onChange={e => setPassword(e.target.value)} className="input"/>
                     <label className="label">Passwort wiederholen:</label>
-                    <input type="password" placeholder="Passwort wiederholen" value={passwordRepeatDebounced}
-                           onChange={e => setPasswordRepeatDebounced(e.target.value)} className="input"/>
+                    <input type="password" placeholder="Passwort wiederholen" value={passwordRepeat}
+                           onChange={e => setPasswordRepeat(e.target.value)} className="input"/>
                     <DefaultButton buttonText="Registrieren" onClick={handleRegister}/>
                     <DefaultButton buttonText="Passwort generieren" onClick={generatePassword}/>
                     <label className="generated">{generatedPassword}</label>
