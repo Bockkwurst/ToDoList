@@ -36,7 +36,12 @@ const RegisterForm = ({darkMode}) => {
     const [successMessage, setSuccessMessage] = useState('');
     const [successMessageColor, setSuccessMessageColor] = useState('');
     const [generatedPassword, setGeneratedPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
 
+
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
     /*useEffect(() => {
         if (username) {
             checkUsername();
@@ -77,7 +82,7 @@ const RegisterForm = ({darkMode}) => {
 
     const generatePassword = () => {
         event.preventDefault();
-        const length = 8;
+        const length = 10;
         const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         let retVal = "";
         for (let i = 0, n = charset.length; i < length; ++i) {
@@ -129,8 +134,8 @@ const RegisterForm = ({darkMode}) => {
     const handleRegister = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/user/register', {username, email, password});
-            if (response.data.success) {
+            const response = await axios.post('http://localhost:3000/user', {username, email, password});
+            if (response.status === 201) {
                 setSuccessMessage('Registrierung erfolgreich');
                 setSuccessMessageColor('#ccff99');
                 alert('Registrierung erfolgreich');
@@ -164,23 +169,44 @@ const RegisterForm = ({darkMode}) => {
             </div>
             <div className="form-container">
                 <form>
-                    <label className="label">Benutzername:</label>
-                    <input type="text" placeholder="Benutzername" value={username}
-                           onChange={e => setUsername(e.target.value)} className="input"/>
-                    <label className="label">E-Mail:</label>
-                    <input type="text" placeholder="E-Mail" value={email}
-                           onChange={e => setEmail(e.target.value)}
-                           className="input"/>
-                    <label className="label">Passwort:</label>
-                    <input type="password" placeholder="Passwort" value={password}
-                           onChange={e => setPassword(e.target.value)} className="input"/>
-                    <label className="label">Passwort wiederholen:</label>
-                    <input type="password" placeholder="Passwort wiederholen" value={passwordRepeat}
-                           onChange={e => setPasswordRepeat(e.target.value)} className="input"/>
-                    <DefaultButton buttonText="Registrieren" onClick={handleRegister}/>
-                    <DefaultButton buttonText="Passwort generieren" onClick={generatePassword}/>
-                    <label className="generated">{generatedPassword}</label>
-                    <label className="error">{error}</label>
+                    <div className="form">
+                        <div className="form-username">
+                            <label className="label">Benutzername:</label>
+                            <input type="text" placeholder="Benutzername" value={username}
+                                   onChange={e => setUsername(e.target.value)} className="input"/>
+                        </div>
+                        <div className="form-email">
+                            <label className="label">E-Mail:</label>
+                            <input type="text" placeholder="E-Mail" value={email}
+                                   onChange={e => setEmail(e.target.value)}
+                                   className="input"/>
+                        </div>
+                        <div className="form-password">
+                            <label className="label">Passwort:</label>
+                            <input type={showPassword ? "text" : "password"} placeholder="Passwort" value={password}
+                                   onChange={e => setPassword(e.target.value)} className="input"/>
+
+                        </div>
+                        <div className="form-password-repeat">
+                            <label className="label">Passwort wiederholen:</label>
+                            <div className="password-input">
+                                <input type={showPassword ? "text" : "password"} placeholder="Passwort wiederholen"
+                                       value={passwordRepeat}
+                                       onChange={e => setPasswordRepeat(e.target.value)} className="input"/>
+                                <button type="button" onClick={toggleShowPassword}>
+                                    {showPassword ? <FaEye/> : <FaEyeSlash/>}
+                                </button>
+                            </div>
+                        </div>
+                        <div className="form-buttons">
+                            <DefaultButton buttonText="Registrieren" onClick={handleRegister}/>
+                            <DefaultButton buttonText="Passwort generieren" onClick={generatePassword}/>
+                        </div>
+                        <div className="form-messages">
+                            <label className="generated">{generatedPassword}</label>
+                            <label className="error">{error}</label>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

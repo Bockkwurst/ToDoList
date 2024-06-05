@@ -61,15 +61,17 @@ const LoginForm = ({darkMode}) => {
                         <div className="form-username">
                             <label className="label">Benutzername:</label>
                             <input type="text" placeholder="Benutzername" value={login}
-                                   onChange={e => setLoginDebounced(e.target.value)} className="input"/>
+                                   onChange={e => setLogin(e.target.value)} className="input"/>
                         </div>
                         <div className="form-password">
                             <label className="label">Passwort:</label>
-                            <input type={showPassword ? "text" : "password"} placeholder="Passwort" value={password}
-                                   onChange={e => setPasswordDebounced(e.target.value)} className="input"/>
-                            <button type="button" onClick={toggleShowPassword}>
-                                {showPassword ? <FaEye/> : <FaEyeSlash/>}
-                            </button>
+                            <div className="password-input">
+                                <input type={showPassword ? "text" : "password"} placeholder="Passwort" value={password}
+                                       onChange={e => setPassword(e.target.value)} className="input"/>
+                                <button type="button" onClick={toggleShowPassword}>
+                                    {showPassword ? <FaEye/> : <FaEyeSlash/>}
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </form>
