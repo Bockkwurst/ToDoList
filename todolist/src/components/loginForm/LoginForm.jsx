@@ -3,9 +3,11 @@ import './loginform.css'
 import axios from "axios";
 import {Link, useNavigate} from "react-router-dom";
 import DefaultButton from "../../components/defaultButton/DefaultButton.jsx";
+
 import {FaEye, FaEyeSlash} from "react-icons/fa";
 import AuthProvider, {useAuth} from "../../utils/AuthProvider.jsx";
 import Debounce from "../../utils/Debounce.js";
+
 
 const LoginForm = ({darkMode}) => {
 
@@ -45,8 +47,7 @@ const LoginForm = ({darkMode}) => {
                 setError('Login failed');
             }
         } catch (error) {
-            console.error('Login error:', error);
-            setError('Login failed');
+
         }
     }
 

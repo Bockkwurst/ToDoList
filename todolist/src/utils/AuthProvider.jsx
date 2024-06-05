@@ -6,22 +6,13 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
 
 
-
-
-
-    useEffect(() => {
-        if (token) {
-            axios.defaults.headers.common["Authorization"] = "Bearer " ;
-
-        } else {
-            delete axios.defaults.headers.common["Authorization"];
-
         }
     }, [token]);
 
     const contextValue = useMemo(
         () => ({
             token,
+
         }),
         [token]
     );

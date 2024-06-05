@@ -70,6 +70,7 @@
 
 .error {
     color: var(--error_color);
+
 }
 
 .form-username {
@@ -96,3 +97,4 @@
     align-items: center;
     margin: 0;
 }
+
