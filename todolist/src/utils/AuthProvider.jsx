@@ -6,8 +6,8 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
 
 
-        }
-    }, [token]);
+        /*}
+    }, [token]);*/
 
     const contextValue = useMemo(
         () => ({
