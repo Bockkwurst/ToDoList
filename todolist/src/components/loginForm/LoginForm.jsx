@@ -3,8 +3,11 @@ import './loginform.css'
 import axios from "axios";
 import {Link, useNavigate} from "react-router-dom";
 import DefaultButton from "../../components/defaultButton/DefaultButton.jsx";
-import { FaEye, FaEyeSlash} from "react-icons/fa";
+
+import {FaEye, FaEyeSlash} from "react-icons/fa";
 import AuthProvider, {useAuth} from "../../utils/AuthProvider.jsx";
+import Debounce from "../../utils/Debounce.js";
+
 
 const LoginForm = ({darkMode}) => {
 
@@ -13,10 +16,12 @@ const LoginForm = ({darkMode}) => {
 
     const navigate = useNavigate();
 
-    const {setToken} = useAuth();
+
 
     const [login, setLogin] = useState('');
+    //const [loginDebounced, setLoginDebounced] = Debounce(login, 500);
     const [password, setPassword] = useState('');
+    //const [passwordDebounced, setPasswordDebounced] = Debounce(password, 500);
     const [error, setError] = useState('');
     const [buttonClicked, setButtonClicked] = useState(false);
 
@@ -28,18 +33,24 @@ const LoginForm = ({darkMode}) => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://localhost:3000/user/atuhenticate', {login, password});
-            if (response.data && response.data.token){
-                setToken(response.data.token);
+            const response = await axios.post('http://localhost:3000/user/authenticate', {login, password}, {
+                withCredentials: true,
+            });
+            if (response.data) {
+                axios.get('http://localhost:3000/user', {
+                    withCredentials: true,
+                }).then(response => {
+                    console.log(response.data);
+                });
                 navigate('/home', {replace: true});
-            }else{
+            } else {
                 setError('Login failed');
             }
-        }catch (error){
-            console.error('Login error:', error);
-            setError('Login failed');
+        } catch (error) {
+
         }
     }
+
 
     const handleButtonClick = (event) => {
         event.preventDefault();
@@ -54,13 +65,23 @@ const LoginForm = ({darkMode}) => {
             </div>
             <div className="form-container">
                 <form>
-                    <label className="label">Benutzername:</label>
-                    <input type="text" placeholder="Benutzername" value={login} onChange={e => setLogin(e.target.value)} className="input"/>
-                    <label className="label">Passwort:</label>
-                    <input type={showPassword ? "text" : "password"} placeholder="Passwort" value={password} onChange={e => setPassword(e.target.value)} className="input"/>
-                    <button type="button" onClick={toggleShowPassword}>
-                        {showPassword ? <FaEye/> : <FaEyeSlash/>}
-                    </button>
+                    <div className="form">
+                        <div className="form-username">
+                            <label className="label">Benutzername:</label>
+                            <input type="text" placeholder="Benutzername" value={login}
+                                   onChange={e => setLogin(e.target.value)} className="input"/>
+                        </div>
+                        <div className="form-password">
+                            <label className="label">Passwort:</label>
+                            <div className="password-input">
+                                <input type={showPassword ? "text" : "password"} placeholder="Passwort" value={password}
+                                       onChange={e => setPassword(e.target.value)} className="input"/>
+                                <button type="button" onClick={toggleShowPassword}>
+                                    {showPassword ? <FaEye/> : <FaEyeSlash/>}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
             <div className="button-container">

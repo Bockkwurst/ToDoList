@@ -1,0 +1,33 @@
+@import url("src/utils/variables.css");
+
+.todo-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+}
+
+.label {
+    font-family: var(--secondary_font);
+    font-size: 20px;
+    margin: 1rem;
+}
+
+.input {
+    font-family: var(--primary_font_regular);
+    font-size: 20px;
+    margin: 1rem;
+}
+
+.button-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.error {
+    color: var(--error_color);
+}

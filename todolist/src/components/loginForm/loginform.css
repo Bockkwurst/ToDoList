@@ -10,7 +10,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50vh;
+    height: 70vh;
     width: 60vw;
     margin: 3rem;
     padding: 0;
@@ -70,4 +70,31 @@
 
 .error {
     color: var(--error_color);
+
 }
+
+.form-username {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+
+.form-password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+}
+
+.input {
+    width: 50%;
+}
+
+.password-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
