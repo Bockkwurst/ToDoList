@@ -1,17 +1,15 @@
 import React from "react";
 import axios from "axios";
-import ToDoForm from "./todoform.css";
-import {Link, useNavigate} from "react-router-dom";
+import "./todoform.css";
+import {Link} from "react-router-dom";
 import DefaultButton from "../defaultButton/DefaultButton.jsx";
 
 const TodoForm = ({darkMode}) => {
 
     const toDoFormContainerClass = darkMode ? "todo-form-container dark-mode" : "todo-form-container light-mode";
 
-    const navigate = useNavigate();
-
-    const [id, setId] = React.useState("");
-    const [userId, setUserId] = React.useState("");
+    const [id] = React.useState(0);
+    const [userId] = React.useState(0);
     const [title, setTitle] = React.useState("");
     const [description, setDescription] = React.useState("");
     const [startDate, setStartDate] = React.useState("");
@@ -20,13 +18,20 @@ const TodoForm = ({darkMode}) => {
 
     const [error, setError] = React.useState(null);
 
+    const setId = () => {
+        return axios.get('http://localhost:3000/todo/', {});
+    }
+    const setUserId = () => {
+        return axios.get('http://localhost:3000/user/authenticate', {});
+    }
+
     const handleSubmit = async () => {
         try {
-            const response = await axios.post('http://localhost:3000/todo/')
-            if (response.data) {
-
-                navigate('/todo')
-            }
+            await axios.post('http://localhost:3000/todo/' + {id: id},
+                {
+                    id: id, title: title, description: description, startDate: startDate,
+                    endDate: endDate, status: status
+                }, {})
         } catch (error) {
             console.log('Save failed:', error)
             setError('Save failed');
@@ -35,10 +40,10 @@ const TodoForm = ({darkMode}) => {
 
     return (
         <div className={toDoFormContainerClass}>
-            <div className="todo-form-container">
-                <form>
-                    <input type="hidden" value={id}/>
-                    <input type="hidden" value={userId}/>
+            <form>
+                <div className="form">
+                    <input type="number" value={id} min={id}/>
+                    <input type="number" value={userId} min={userId}/>
                     <label className="label">Title:</label>
                     <input type="text" value={title}
                            onChange={e => setTitle(e.target.value)} className="input"/>
@@ -53,22 +58,15 @@ const TodoForm = ({darkMode}) => {
                     <input type="text" value={endDate}
                            onChange={e => setEndDate(e.target.value)} className="input"/>
                     <label className="label">Status:</label>
-                    <ul>
-                        <li>
-                            <input type="radio" value={status}
-                                   onChange={e => setStatus(e.target.value)} className="input"/>
-                        </li>
-                        <li>
-                            <input type="radio" value={status}
-                                   onChange={e => setStatus(e.target.value)} className="input"/>
-                        </li>
-                        <li>
-                            <input type="radio" value={status}
-                                   onChange={e => setStatus(e.target.value)} className="input"/>
-                        </li>
-                    </ul>
-                </form>
-            </div>
+                </div>
+            </form>
+            <form className="status-options">
+                <select value={status} className="status-options" onChange={e => setStatus(e.target.value)}>
+                    <option value="todo" className="input">ToDo</option>
+                    <option value="doing" className="input">Doing</option>
+                    <option value="done" className="input">Done</option>
+                </select>
+            </form>
             <div className="button-container">
                 <Link to="/home">
                     <DefaultButton buttonText="Cancel"></DefaultButton>
