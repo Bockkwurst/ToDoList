@@ -8,8 +8,7 @@ const TodoForm = ({darkMode}) => {
 
     const toDoFormContainerClass = darkMode ? "todo-form-container dark-mode" : "todo-form-container light-mode";
 
-    const [id] = React.useState(0);
-    const [userId] = React.useState(0);
+
     const [title, setTitle] = React.useState("");
     const [description, setDescription] = React.useState("");
     const [startDate, setStartDate] = React.useState("");
@@ -18,20 +17,12 @@ const TodoForm = ({darkMode}) => {
 
     const [error, setError] = React.useState(null);
 
-    const setId = () => {
-        return axios.get('http://localhost:3000/todo/', {});
-    }
-    const setUserId = () => {
-        return axios.get('http://localhost:3000/user/authenticate', {});
-    }
-
     const handleSubmit = async () => {
         try {
-            await axios.post('http://localhost:3000/todo/' + {id: id},
+            await axios.post('http://localhost:3000/todo/',
                 {
-                    id: id, title: title, description: description, startDate: startDate,
-                    endDate: endDate, status: status
-                }, {})
+                    title, description, startDate, endDate, status
+                }, {withCredentials: true});
         } catch (error) {
             console.log('Save failed:', error)
             setError('Save failed');
@@ -42,8 +33,6 @@ const TodoForm = ({darkMode}) => {
         <div className={toDoFormContainerClass}>
             <form>
                 <div className="form">
-                    <input type="number" value={id} min={id}/>
-                    <input type="number" value={userId} min={userId}/>
                     <label className="label">Title:</label>
                     <input type="text" value={title}
                            onChange={e => setTitle(e.target.value)} className="input"/>
@@ -71,7 +60,7 @@ const TodoForm = ({darkMode}) => {
                 <Link to="/home">
                     <DefaultButton buttonText="Cancel"></DefaultButton>
                 </Link>
-                <Link to="/todo/">
+                <Link to="/home">
                     <DefaultButton buttonText="Submit" onClick={(event) => handleSubmit(event)}/>
                 </Link>
             </div>
