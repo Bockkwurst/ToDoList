@@ -20,9 +20,8 @@ const TodoForm = ({darkMode}) => {
     const handleSubmit = async () => {
         try {
             await axios.post('http://localhost:3000/todo/',
-                {
-                    title, description, startDate, endDate, status
-                }, {withCredentials: true});
+                {ToDoDto:{title: title, description: description, startDate: startDate, endDate: endDate, status: status}},
+                {withCredentials: true});
         } catch (error) {
             console.log('Save failed:', error)
             setError('Save failed');
@@ -48,22 +47,21 @@ const TodoForm = ({darkMode}) => {
                            onChange={e => setEndDate(e.target.value)} className="input"/>
                     <label className="label">Status:</label>
                 </div>
-            </form>
-            <form className="status-options">
                 <select value={status} className="status-options" onChange={e => setStatus(e.target.value)}>
                     <option value="todo" className="input">ToDo</option>
                     <option value="doing" className="input">Doing</option>
                     <option value="done" className="input">Done</option>
                 </select>
+                <div className="button-container">
+                    <Link to="/home">
+                        <DefaultButton buttonText="Cancel"></DefaultButton>
+                    </Link>
+                    <Link to="/home">
+                        <DefaultButton buttonText="Submit" onClick={(event) => handleSubmit(event)}/>
+                    </Link>
+                </div>
             </form>
-            <div className="button-container">
-                <Link to="/home">
-                    <DefaultButton buttonText="Cancel"></DefaultButton>
-                </Link>
-                <Link to="/home">
-                    <DefaultButton buttonText="Submit" onClick={(event) => handleSubmit(event)}/>
-                </Link>
-            </div>
+
             <div className="error-message">
                 <label className="error">{error}</label>
             </div>
