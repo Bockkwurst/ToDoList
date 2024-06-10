@@ -1,0 +1,125 @@
+@import url("/src/utils/variables.css");
+
+
+.register-page-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    width: 60vw;
+    margin: 3rem;
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px 3px dimgray;
+}
+
+.register-page-container.dark-mode {
+    background: var(--bg_dark_primary);
+}
+
+.register-page-container.light-mode {
+    background: var(--bg_light_primary);
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.label {
+    font-family: var(--secondary_font);
+    font-size: 20px;
+    margin: 0;
+}
+
+.input {
+    font-family: var(--primary_font_regular);
+    font-size: 20px;
+    margin-right: 1rem;
+}
+
+.logo-form {
+    width: 150px;
+    height: 200px;
+}
+
+.button-container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.error {
+    color: var(--error_color);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.form-username {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.form-password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.form-password-repeat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.form-email {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.form-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.form-messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

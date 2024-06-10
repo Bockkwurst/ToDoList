@@ -33,11 +33,19 @@ const LoginForm = ({darkMode}) => {
 
     const handleLogin = async () => {
         try {
+<<<<<<< 18-todoform
             const response = await axios.post('http://localhost:3000/user/authenticate', {login, password}, {
                 withCredentials: true,
             });
             if (response.data) {
                 axios.get('http://localhost:3000/user', {
+=======
+            const response = await axios.post('http://localhost:3030/user/authenticate', {login, password}, {
+                withCredentials: true,
+            });
+            if (response.data) {
+                axios.get('http://localhost:3030/user', {
+>>>>>>> dev
                     withCredentials: true,
                 }).then(response => {
                     console.log(response.data);
