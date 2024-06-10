@@ -17,14 +17,13 @@ const LoginForm = ({darkMode}) => {
     const navigate = useNavigate();
 
 
-
     const [login, setLogin] = useState('');
     //const [loginDebounced, setLoginDebounced] = Debounce(login, 500);
     const [password, setPassword] = useState('');
     //const [passwordDebounced, setPasswordDebounced] = Debounce(password, 500);
     const [error, setError] = useState('');
     const [buttonClicked, setButtonClicked] = useState(false);
-
+    const {setToken} = useAuth();
     const [showPassword, setShowPassword] = useState(false);
 
     const toggleShowPassword = () => {
@@ -40,6 +39,10 @@ const LoginForm = ({darkMode}) => {
                 axios.get('http://localhost:3030/user', {
                     withCredentials: true,
                 }).then(response => {
+                    if (response.status === 200) {
+                        setToken(response.data.token);
+                        localStorage.setItem
+                    }
                     console.log(response.data);
                 });
                 navigate('/home', {replace: true});

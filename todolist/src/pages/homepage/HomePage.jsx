@@ -1,9 +1,10 @@
 import React from "react";
+import TodoDisplay from "../../components/todoDisplay/TodoDisplay.jsx";
 
-export default function HomePage(){
+export default function HomePage({darkMode, setDarkMode}) {
     return(
         <div>
-            <h1>Home Page</h1>
+            <TodoDisplay darkMode={darkMode} setDarkmode={setDarkMode}/>
         </div>
     )
 }

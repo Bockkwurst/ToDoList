@@ -11,6 +11,7 @@ const AuthProvider = ({ children }) => {
     const setToken = (newToken) => {
         setToken_(newToken);
     };
+    console.log("setToken", token);
 
     useEffect(() => {
         if (token) {
@@ -21,6 +22,7 @@ const AuthProvider = ({ children }) => {
             localStorage.removeItem('token')
         }
     }, [token]);
+    console.log("contextValue", token);
 
     const contextValue = useMemo(
         () => ({
@@ -29,6 +31,7 @@ const AuthProvider = ({ children }) => {
         }),
         [token]
     );
+    console.log("return AuthContext.Provider", token);
 
     return (
         <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

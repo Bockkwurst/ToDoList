@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Link, NavLink, useNavigate} from "react-router-dom";
 import "./navbar.css";
 import {FaDoorOpen, FaFingerprint, FaRegEdit} from "react-icons/fa";
@@ -11,18 +11,39 @@ export default function Navbar({darkMode}) {
     const logo = darkMode ? "/images/logo-lang-dunkel.png" : "/images/logo-lang-weiss.png";
     const navbarClass = darkMode ? "menu-container dark-mode" : "menu-container light-mode";
     const linkClass = darkMode ? "link dark-mode" : "link light-mode";
-    const {token, setToken} = useAuth();
+    const { token: authToken, setToken} = useAuth();
+    const [token, setLocalToken] = useState(authToken);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const cookie = document.cookie
+            .split('; ')
+            .find(row => row.startsWith('token='))
+
+            if (cookie) {
+                const token = cookie.split('=')[1];
+                setToken(token);
+                console.log('Token set to: ', token);
+            }
+    }, []);
+
+    useEffect(() => {
+        setLocalToken(authToken);
+    }, [authToken]);
+    console.log("setLocalToken", token);
 
     const handleLogoClick = (event) => {
         event.preventDefault();
         token ? navigate('/home') : navigate('/');
     }
+    console.log("handleLogoClick", token);
 
     const handleLogout = () => {
+        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         setToken(null);
         navigate('/');
     }
+    console.log("handleLogout", token);
 
     return (
         <nav className={navbarClass}>
@@ -38,6 +59,7 @@ export default function Navbar({darkMode}) {
                 <span></span>
             </div>
             <ul className="menu">
+
                 {token ? (
                     <div className="links-container">
                         <li className="item">
