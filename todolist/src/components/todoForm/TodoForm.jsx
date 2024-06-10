@@ -1,13 +1,14 @@
 import React from "react";
 import axios from "axios";
 import "./todoform.css";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import DefaultButton from "../defaultButton/DefaultButton.jsx";
 
 const TodoForm = ({darkMode}) => {
 
     const toDoFormContainerClass = darkMode ? "todo-form-container dark-mode" : "todo-form-container light-mode";
 
+    const navigate = useNavigate();
 
     const [title, setTitle] = React.useState("");
     const [description, setDescription] = React.useState("");
@@ -37,7 +38,7 @@ const TodoForm = ({darkMode}) => {
 
     return (
         <div className={toDoFormContainerClass}>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <div className="form">
                     <label className="label">Title:</label>
                     <input type="text" value={title}
@@ -62,13 +63,13 @@ const TodoForm = ({darkMode}) => {
                     </select>
                 </div>
                 <div className="button-container">
-                    <Link to="/home">
-                        <DefaultButton buttonText="Abbrechen" buttonType="cancel"
-                                       onClick={(event) => event.preventDefault()}></DefaultButton>
-                    </Link>
-                    <Link to="/home">
-                        <DefaultButton buttonText="ToDo erstellen" buttonType="submit"></DefaultButton>
-                    </Link>
+                    <DefaultButton buttonText="Abbrechen" buttonType="cancel"
+                                   onClick={(event) => {
+                                       event.preventDefault();
+                                       navigate("/home");
+                                   }}/>
+                    <DefaultButton buttonText="ToDo erstellen" buttonType="submit"
+                                   onClick={() => navigate("/home")}/>
                 </div>
             </form>
             <div className="error-message">
