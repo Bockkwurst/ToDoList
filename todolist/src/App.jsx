@@ -5,6 +5,8 @@ import ToggleSwitch from "./components/toggle/ToggleSwitch.jsx";
 import Navbar from "./components/navbar/Navbar.jsx";
 import RegisterPage from "./pages/registerpage/RegisterPage.jsx";
 import LoginPage from "./pages/loginpage/LoginPage.jsx";
+import HomePage from "./pages/homepage/HomePage.jsx";
+import TodoCreatorPage from "./pages/todocreatorpage/TodoCreatorPage.jsx";
 import AuthProvider from "./utils/AuthProvider.jsx";
 
 export function App() {
@@ -24,7 +26,6 @@ export function App() {
     };
 
     return (
-        <AuthProvider>
             <BrowserRouter>
                 <div>
                     <Navbar darkMode={darkMode} setDarkMode={setDarkMode}/>
@@ -34,10 +35,11 @@ export function App() {
                         <Route path="/register"
                                element={<RegisterPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
                         <Route path="/login" element={<LoginPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+                        <Route path="/home" element={<HomePage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+                        <Route path="/createtodo" element={<TodoCreatorPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
                     </Routes>
                 </div>
             </BrowserRouter>
-        </AuthProvider>
     );
 }
 
