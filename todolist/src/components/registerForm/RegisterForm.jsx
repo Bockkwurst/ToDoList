@@ -134,7 +134,7 @@ const RegisterForm = ({darkMode}) => {
     const handleRegister = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3000/user', {username, email, password});
+            const response = await axios.post('http://localhost:3030/user', {username, email, password});
             if (response.status === 201) {
                 setSuccessMessage('Registrierung erfolgreich');
                 setSuccessMessageColor('#ccff99');

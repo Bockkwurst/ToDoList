@@ -24,6 +24,7 @@ export function App() {
     };
 
     return (
+        <AuthProvider>
             <BrowserRouter>
                 <div>
                     <Navbar darkMode={darkMode} setDarkMode={setDarkMode}/>
@@ -36,7 +37,9 @@ export function App() {
                     </Routes>
                 </div>
             </BrowserRouter>
-    );
+        </AuthProvider>
+    )
+        ;
 }
 
 export default App;
