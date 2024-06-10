@@ -38,8 +38,7 @@ export function App() {
                 </div>
             </BrowserRouter>
         </AuthProvider>
-    )
-        ;
+    );
 }
 
 export default App;
