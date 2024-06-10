@@ -1,7 +1,7 @@
 import React from "react";
 import TodoOverview from "../../components/todoOverview/TodoOverview.jsx";
 
- function HomePage(){
+ function HomePage({darkMode, setDarkMode}) {
     return(
         <div>
             <h1>Home Page</h1>
