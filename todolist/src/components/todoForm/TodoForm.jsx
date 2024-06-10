@@ -20,7 +20,7 @@ const TodoForm = ({darkMode}) => {
 
     const handleSubmit = async () => {
         try {
-            await axios.post('http://localhost:3030/todo/',
+            const response = await axios.post('http://localhost:3030/todo/',
                 {
                     title: title,
                     description: description,
@@ -29,10 +29,17 @@ const TodoForm = ({darkMode}) => {
                     status: status
                 },
                 {withCredentials: true});
+            if (response.status === 201) {
+                navigate("/home");
+                alert('ToDo erstellt.')
+            } else {
+                alert('ToDo erstellen fehlgeschlagen.');
+                setErrorMessage('ToDo erstellen fehlgeschlagen.');
+            }
         } catch (error) {
             console.log('Speichern fehlgeschlagen: ', error)
             setErrorMessage('Speichern fehlgeschlagen: ' + error.message);
-            alert('Speichern fehlgeschlagen: ' + error.message);
+            alert('Speichern fehlgeschlagen.');
         }
     }
 
@@ -40,7 +47,7 @@ const TodoForm = ({darkMode}) => {
         <div className={toDoFormContainerClass}>
             <form onSubmit={handleSubmit}>
                 <div className="form">
-                    <label className="label">Title:</label>
+                    <label className="label">Titel:</label>
                     <input type="text" value={title}
                            onChange={e => setTitle(e.target.value)} className="input"/>
                     <label className="label">Beschreibung:</label>
@@ -68,8 +75,7 @@ const TodoForm = ({darkMode}) => {
                                        event.preventDefault();
                                        navigate("/home");
                                    }}/>
-                    <DefaultButton buttonText="ToDo erstellen" buttonType="submit"
-                                   onClick={() => navigate("/home")}/>
+                    <DefaultButton buttonText="ToDo erstellen" buttonType="submit"/>
                 </div>
             </form>
             <div className="error-message">
