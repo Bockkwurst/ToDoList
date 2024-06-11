@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "./todoform.css";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import DefaultButton from "../defaultButton/DefaultButton.jsx";
 
 const TodoForm = ({darkMode}) => {
@@ -46,20 +46,19 @@ const TodoForm = ({darkMode}) => {
     return (
         <div className={toDoFormContainerClass}>
             <form onSubmit={handleSubmit}>
-                <div className="form">
+                <div className="input-container">
                     <label className="label">Titel:</label>
                     <input type="text" value={title}
-                           onChange={e => setTitle(e.target.value)} className="input"/>
+                           onChange={e => setTitle(e.target.value)}/>
                     <label className="label">Beschreibung:</label>
                     <textarea value={description}
-                              onChange={e => setDescription(e.target.value)}
-                              className="input"/>
-                    <label className="lable">Startdatum:</label>
+                              onChange={e => setDescription(e.target.value)}/>
+                    <label className="label">Startdatum:</label>
                     <input type="text" value={startDate}
-                           onChange={e => setStartDate(e.target.value)} className="input"/>
+                           onChange={e => setStartDate(e.target.value)}/>
                     <label className="label">Enddatum:</label>
                     <input type="text" value={endDate}
-                           onChange={e => setEndDate(e.target.value)} className="input"/>
+                           onChange={e => setEndDate(e.target.value)}/>
                     <label className="label">Status:</label>
                     <select value={status} className="status-options"
                             onChange={e => setStatus(e.target.value)}>
@@ -82,7 +81,6 @@ const TodoForm = ({darkMode}) => {
                 <label className="error">{errorMessage}</label>
             </div>
         </div>
-
     )
 }
 

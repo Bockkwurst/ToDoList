@@ -25,6 +25,13 @@
     background: var(--bg_light_primary);
 }
 
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .label {
     font-family: var(--secondary_font);
     font-size: 20px;
@@ -48,12 +55,12 @@
 }
 
 .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
 }
 
 .error {
