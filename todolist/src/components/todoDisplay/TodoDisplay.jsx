@@ -1,15 +1,25 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import { useAuth } from "../../utils/AuthProvider.jsx";
+import {useAuth} from "../../utils/AuthProvider.jsx";
+import { jwtDecode } from "jwt-decode";
 
 export default function TodoDisplay({darkMode}) {
 
     const [data, setData] = useState(null);
-    const { currentUser } = useAuth();
+    const { token } = useAuth();
+    const titleClass = darkMode ? "title dark-mode" : "title light-mode";
+
+
+
+    let username = 'Guest';
+    if (token) {
+        const decodedToken = jwtDecode(token);
+        username = decodedToken.username;
+    }
 
     useEffect(() => {
-        if (currentUser) {
-            axios.get ('http://localhost:3030/${currentUser.id}')
+        if (username !== 'Guest') {
+            axios.get(`http://localhost:3030/${username}`)
                 .then(response => {
                     setData(response.data);
                 })
@@ -17,12 +27,11 @@ export default function TodoDisplay({darkMode}) {
                     console.log(error);
                 });
         }
-    }, [currentUser]);
+    }, [username]);
 
     return (
         <div>
-            <h1>Herzlich willkommen {currentUser ? currentUser.username : ""}</h1>
-            {data && <div>{JSON.stringify(data)}</div>}
+            <div className={titleClass}>Hallo {username}</div>
         </div>
     )
 }

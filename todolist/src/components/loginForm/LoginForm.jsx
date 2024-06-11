@@ -41,9 +41,8 @@ const LoginForm = ({darkMode}) => {
                 }).then(response => {
                     if (response.status === 200) {
                         setToken(response.data.token);
-                        localStorage.setItem
+                        localStorage.setItem('token', response.data.token);
                     }
-                    console.log(response.data);
                 });
                 navigate('/home', {replace: true});
             } else {

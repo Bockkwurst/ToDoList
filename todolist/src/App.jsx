@@ -5,12 +5,13 @@ import ToggleSwitch from "./components/toggle/ToggleSwitch.jsx";
 import Navbar from "./components/navbar/Navbar.jsx";
 import RegisterPage from "./pages/registerpage/RegisterPage.jsx";
 import LoginPage from "./pages/loginpage/LoginPage.jsx";
-import AuthProvider from "./utils/AuthProvider.jsx";
+import AuthProvider, { useAuth } from "./utils/AuthProvider.jsx";
 import HomePage from "./pages/homepage/HomePage.jsx";
 
 export function App() {
     const [toggled, setToggled] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
+    const { token: authToken, setToken } = useAuth();
 
     useEffect(() => {
         if (darkMode) {
@@ -25,10 +26,9 @@ export function App() {
     };
 
     return (
-        <AuthProvider>
             <BrowserRouter>
                 <div>
-                    <Navbar darkMode={darkMode} setDarkMode={setDarkMode}/>
+                    <Navbar key={authToken} darkMode={darkMode} setDarkMode={setDarkMode}/>
                     <ToggleSwitch toggled={darkMode} onClick={handleClick}/>
                     <Routes>
                         <Route path="/" element={<StartPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
@@ -39,7 +39,6 @@ export function App() {
                     </Routes>
                 </div>
             </BrowserRouter>
-        </AuthProvider>
     );
 }
 

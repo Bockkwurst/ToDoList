@@ -23,27 +23,23 @@ export default function Navbar({darkMode}) {
             if (cookie) {
                 const token = cookie.split('=')[1];
                 setToken(token);
-                console.log('Token set to: ', token);
             }
     }, []);
 
     useEffect(() => {
         setLocalToken(authToken);
     }, [authToken]);
-    console.log("setLocalToken", token);
 
     const handleLogoClick = (event) => {
         event.preventDefault();
         token ? navigate('/home') : navigate('/');
     }
-    console.log("handleLogoClick", token);
 
     const handleLogout = () => {
         document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         setToken(null);
         navigate('/');
     }
-    console.log("handleLogout", token);
 
     return (
         <nav className={navbarClass}>
