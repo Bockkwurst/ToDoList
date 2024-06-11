@@ -5,6 +5,8 @@ import ToggleSwitch from "./components/toggle/ToggleSwitch.jsx";
 import Navbar from "./components/navbar/Navbar.jsx";
 import RegisterPage from "./pages/registerpage/RegisterPage.jsx";
 import LoginPage from "./pages/loginpage/LoginPage.jsx";
+import HomePage from "./pages/homepage/HomePage.jsx";
+import TodoCreatorPage from "./pages/todocreatorpage/TodoCreatorPage.jsx";
 import AuthProvider from "./utils/AuthProvider.jsx";
 import HomePage from "./pages/homepage/HomePage.jsx";
 import TodoEditorPage from "./pages/todoeditorpage/TodoEditorPage.jsx";
@@ -27,7 +29,6 @@ export function App() {
     };
 
     return (
-        <AuthProvider>
             <BrowserRouter>
                 <div>
                     <Navbar darkMode={darkMode} setDarkMode={setDarkMode}/>
@@ -45,7 +46,6 @@ export function App() {
                     </Routes>
                 </div>
             </BrowserRouter>
-        </AuthProvider>
     );
 }
 

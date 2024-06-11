@@ -1,7 +1,7 @@
 @import url("/src/utils/variables.css");
 
 
-.login-page-container {
+.register-page-container {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -10,7 +10,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    height: 90vh;
     width: 60vw;
     margin: 3rem;
     padding: 0;
@@ -18,11 +18,11 @@
     box-shadow: 3px 3px 3px 3px dimgray;
 }
 
-.login-page-container.dark-mode {
+.register-page-container.dark-mode {
     background: var(--bg_dark_primary);
 }
 
-.login-page-container.light-mode {
+.register-page-container.light-mode {
     background: var(--bg_light_primary);
 }
 
@@ -31,7 +31,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin: 2rem;
+    margin: 0;
 }
 
 .form-container {
@@ -39,13 +39,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 2rem;
+    margin: 0;
+    padding: 0;
 }
 
 .label {
     font-family: var(--secondary_font);
     font-size: 20px;
-    margin: 1rem;
+    margin: 0;
 }
 
 .input {
@@ -70,31 +71,55 @@
 
 .error {
     color: var(--error_color);
+}
 
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
 
 .form-username {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem;
+    margin: 0;
 }
 
 .form-password {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2rem;
+    margin: 0;
 }
 
-.input {
-    width: 50%;
-}
-
-.password-input {
+.form-password-repeat {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     margin: 0;
 }
 
+.form-email {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.form-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.form-messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
