@@ -6,6 +6,9 @@ import Navbar from "./components/navbar/Navbar.jsx";
 import RegisterPage from "./pages/registerpage/RegisterPage.jsx";
 import LoginPage from "./pages/loginpage/LoginPage.jsx";
 import AuthProvider from "./utils/AuthProvider.jsx";
+import HomePage from "./pages/homepage/HomePage.jsx";
+import TodoEditorPage from "./pages/todoeditorpage/TodoEditorPage.jsx";
+import TodoCreatorPage from "./pages/todocreatorpage/TodoCreatorPage.jsx";
 
 export function App() {
     const [toggled, setToggled] = useState(false);
@@ -34,6 +37,11 @@ export function App() {
                         <Route path="/register"
                                element={<RegisterPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
                         <Route path="/login" element={<LoginPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+                        <Route path="/home" element={<HomePage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+                        <Route path="/createtodo"
+                               element={<TodoCreatorPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+                        <Route path="/edittodo/:id"
+                               element={<TodoEditorPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
                     </Routes>
                 </div>
             </BrowserRouter>
