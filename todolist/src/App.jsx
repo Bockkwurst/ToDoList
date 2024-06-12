@@ -7,6 +7,8 @@ import RegisterPage from "./pages/registerpage/RegisterPage.jsx";
 import LoginPage from "./pages/loginpage/LoginPage.jsx";
 import HomePage from "./pages/homepage/HomePage.jsx";
 import TodoCreatorPage from "./pages/todocreatorpage/TodoCreatorPage.jsx";
+import TodoEditorPage from "./pages/todoEditorPage/TodoEditorPage.jsx";
+import TodoDetailsPage from "./pages/tododetailspage/TodoDetailsPage.jsx";
 import AuthProvider from "./utils/AuthProvider.jsx";
 
 export function App() {
@@ -37,6 +39,10 @@ export function App() {
                         <Route path="/login" element={<LoginPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
                         <Route path="/home" element={<HomePage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
                         <Route path="/createtodo" element={<TodoCreatorPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+                        <Route path="/detailstodo/:id"
+                               element={<TodoDetailsPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+                        <Route path="/edittodo/:id"
+                               elment={<TodoEditorPage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
                     </Routes>
                 </div>
             </BrowserRouter>
